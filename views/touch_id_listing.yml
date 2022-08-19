@@ -1,0 +1,14 @@
+i18n_title: touch_id.report
+js_link: module/touch_id/js/touch_id
+not_null_column: enabled
+table:
+  - column: machine.computer_name
+    i18n_header: listing.computername
+    formatter: clientDetail
+    tab_link: touch_id-tab
+  - column: reportdata.serial_number
+    i18n_header: serial
+  - {i18n_header: touch_id.enabled, column: touch_id.enabled, formatter: formatTouchIDEnabledDisabled}
+  - {i18n_header: touch_id.unlock, column: touch_id.unlock, formatter: formatTouchIDEnabledDisabled}
+  - {i18n_header: touch_id.timeout, column: touch_id.timeout, formatter: formatTouchIDTimeout}
+  - {i18n_header: touch_id.fingerprints, column: touch_id.fingerprints, formatter: formatTouchIDFingerprints}

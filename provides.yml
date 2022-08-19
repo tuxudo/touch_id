@@ -1,0 +1,8 @@
+client_tabs:
+    touch_id-tab:
+        view: touch_id_tab
+        i18n: touch_id.touch_id
+listings:
+    touch_id:
+        view: touch_id_listing
+        i18n: touch_id.touch_id
