@@ -17,7 +17,7 @@ def get_system_prints():
     (output, unused_error) = proc.communicate()
 
 
-    if "There are no fingerprints in the system" in output:
+    if "There are no fingerprints in the system" in output.decode("utf-8", errors="ignore"):
         return "No fingerprints"
     else:
 
