@@ -42,6 +42,9 @@ class Touch_id_controller extends Module_controller
 
         $obj = new View();
         $queryobj = new Touch_id_model();
-        $obj->view('json', array('msg' => current(array('msg' => $queryobj->query($sql)[0])))); 
+        $touch_id_tab_data = $queryobj->query($sql)
+        if (array_key_exists(0, $touch_id_tab_data)){
+            $obj->view('json', array('msg' => current(array('msg' => $touch_id_tab_data[0]))));
+        }
     }
 } // End class Touch_id_controller
