@@ -1,1 +1,5 @@
-{"require":{"php":"^7.4"},"license":"MIT","name":"tuxudo/touch_id","description":"Touch ID module for munkireport."}
+{
+  "license":"MIT",
+  "name":"tuxudo/touch_id",
+  "description":"Touch ID module for munkireport."
+}
