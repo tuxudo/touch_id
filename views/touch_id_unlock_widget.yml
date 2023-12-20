@@ -1,0 +1,13 @@
+type: button
+widget_id: touch_id_unlock-widget
+api_url: /module/touch_id/get_button_widget/unlock
+i18n_title: touch_id.unlock_widget
+listing_link: /show/listing/touch_id/touch_id
+icon: fa-unlock
+buttons:
+  - label: no
+    i18n_label: no
+    class: btn-danger
+  - label: yes
+    i18n_label: yes
+    class: btn-success

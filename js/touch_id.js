@@ -10,9 +10,8 @@ var formatTouchIDTimeout = function(colNumber, row){
     var col = $('td:eq('+colNumber+')', row),
         colvar = col.text();
 
-    if (col >= 0) {
-        colvar = colvar+' Seconds</td></tr>';
-        col.html(colvar)
+    if (colvar >= 0 && colvar !== "") {
+        col.html('<span title="'+touchid_secondsToHms(colvar)+'">'+colvar+' Seconds</span>');
     }
 }
 
@@ -21,4 +20,16 @@ var formatTouchIDFingerprints = function(colNumber, row){
         colvar = col.text();
     colvar = colvar.replace(/\n/g, "<br>").replace(/\\/g, "")+'</td></tr>';
     col.html(colvar)
+}
+
+function touchid_secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    var hDisplay = h > 0 ? h + (h == 1 ? " hour " : " hours ") : "";
+    var mDisplay = m > 0 ? m + (m == 1 ? " minute " : " minutes ") : "";
+    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    return hDisplay + mDisplay + sDisplay; 
 }

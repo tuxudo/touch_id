@@ -6,3 +6,14 @@ listings:
     touch_id:
         view: touch_id_listing
         i18n: touch_id.touch_id
+reports:
+    touch_id_report:
+        view: touch_id_report
+        i18n: touch_id.report
+widgets:
+    touch_id_enabled:
+        view: touch_id_enabled_widget
+    touch_id_fingerprints:
+        view: touch_id_fingerprints_widget
+    touch_id_unlock:
+        view: touch_id_unlock_widget

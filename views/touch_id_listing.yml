@@ -10,5 +10,7 @@ table:
     i18n_header: serial
   - {i18n_header: touch_id.enabled, column: touch_id.enabled, formatter: formatTouchIDEnabledDisabled}
   - {i18n_header: touch_id.unlock, column: touch_id.unlock, formatter: formatTouchIDEnabledDisabled}
-  - {i18n_header: touch_id.timeout, column: touch_id.timeout, formatter: formatTouchIDTimeout}
   - {i18n_header: touch_id.fingerprints, column: touch_id.fingerprints, formatter: formatTouchIDFingerprints}
+  - {i18n_header: touch_id.timeout, column: touch_id.timeout, formatter: formatTouchIDTimeout}
+  - {i18n_header: touch_id.match_timeout, column: touch_id.match_timeout, formatter: formatTouchIDTimeout}
+  - {i18n_header: touch_id.passcode_input_timeout, column: touch_id.passcode_input_timeout, formatter: formatTouchIDTimeout}

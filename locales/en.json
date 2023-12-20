@@ -3,6 +3,9 @@
     "report": "Touch ID Report",
     "enabled": "Touch ID Status",
     "unlock": "Unlock",
+    "unlock_widget": "Touch ID Unlock Enabled",
     "timeout": "Unlock Timeout",
+    "match_timeout": "Match Timeout",
+    "passcode_input_timeout": "Passcode Input Timeout",
     "fingerprints": "Enrolled Fingerprints"
 }

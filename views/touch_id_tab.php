@@ -28,9 +28,9 @@ $(document).on('appReady', function(){
                 } else if((prop == 'enabled' || prop == 'unlock') && d[prop] == 0){
                     rows = rows + '<tr><th>'+i18n.t('touch_id.'+prop)+'</th><td>'+i18n.t('disabled')+'</td></tr>';
 
-                // Format timeout
-                } else if(prop == 'timeout' && d[prop] >= 0){
-                    rows = rows + '<tr><th>'+i18n.t('touch_id.'+prop)+'</th><td>'+d[prop]+' Seconds</td></tr>';
+                // Format timeouts
+                } else if((prop == 'timeout' || prop == 'match_timeout' || prop == 'passcode_input_timeout') && d[prop] >= 0){
+                    rows = rows + '<tr><th>'+i18n.t('touch_id.'+prop)+'</th><td><span title="'+touchid_secondsToHms(d[prop])+'">'+d[prop]+' Seconds</span></td></tr>';
 
                 // Format fingerprints
                 } else if(prop == "fingerprints"){
@@ -51,4 +51,16 @@ $(document).on('appReady', function(){
         }
     });
 });
+
+function touchid_secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+
+    var hDisplay = h > 0 ? h + (h == 1 ? " hour " : " hours ") : "";
+    var mDisplay = m > 0 ? m + (m == 1 ? " minute " : " minutes ") : "";
+    var sDisplay = s > 0 ? s + (s == 1 ? " second" : " seconds") : "";
+    return hDisplay + mDisplay + sDisplay; 
+}
 </script>

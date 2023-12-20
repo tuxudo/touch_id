@@ -1,0 +1,10 @@
+type: button
+widget_id: touch_id_fingerprints-widget
+api_url: /module/touch_id/get_touch_id_fingerprints
+i18n_title: touch_id.fingerprints
+listing_link: /show/listing/touch_id/touch_id
+icon: fa-hand-pointer-o
+buttons:
+  - label: fingerprints
+    i18n_label: touch_id.fingerprints
+    class: btn-info

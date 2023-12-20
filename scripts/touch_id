@@ -16,8 +16,8 @@ def get_system_prints():
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (output, unused_error) = proc.communicate()
 
-
-    if "There are no fingerprints in the system" in output.decode("utf-8", errors="ignore"):
+    # This text is different for different versions of macOS
+    if "There are no ":
         return "No fingerprints"
     else:
 
@@ -55,23 +55,27 @@ def getTouchIDConfig():
                             stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     (output, unused_error) = proc.communicate()
 
-    # Check if we have Touch ID
-    if "Touch ID for unlock" not in output.decode("utf-8", errors="ignore"):
+    # Check if we have Touch ID, this text is different for different versions of macOS
+    if " for unlock" not in output.decode("utf-8", errors="ignore"):
         return "No Touch ID"
     else:
         config = {}
         for line in output.decode("utf-8", errors="ignore").split('\n'):
 
-            if 'Touch ID functionality: 1' in line:
+            if 'Touch ID functionality: 1' in line or 'Biometrics functionality: 1' in line:
                 config['enabled'] = 1
-            elif 'Touch ID functionality: 0' in line:
+            elif 'Touch ID functionality: 0' in line or 'Biometrics functionality: 0' in line:
                 config['enabled'] = 0
-            elif 'Touch ID for unlock: 1' in line:
+            elif 'Touch ID for unlock: 1' in line or 'Biometrics for unlock: 1' in line:
                 config['unlock'] = 1
-            elif 'Touch ID unlock: 0' in line:
+            elif 'Touch ID unlock: 0' in line or 'Biometrics for unlock: 0' in line:
                 config['unlock'] = 0
-            elif "Touch ID timeout" in line:
+            elif 'Touch ID timeout ' in line or 'Biometric timeout ' in line:
                 config['timeout']=re.sub('\D', '', line)
+            elif 'Match timeout ' in line:
+                config['match_timeout']=re.sub('\D', '', line)
+            elif 'Passcode input timeout ' in line:
+                config['passcode_input_timeout']=re.sub('\D', '', line)
 
         return config
 

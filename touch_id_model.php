@@ -13,6 +13,8 @@ class Touch_id_model extends \Model
         $this->rs['unlock'] = null; // Boolean 0/1
         $this->rs['fingerprints'] = null;
         $this->rs['timeout'] = null;
+        $this->rs['match_timeout'] = null;
+        $this->rs['passcode_input_timeout'] = null;
 
         if ($serial) {
             $this->retrieve_record($serial);
@@ -42,7 +44,7 @@ class Touch_id_model extends \Model
             $plist = $parser->toArray();
 
             // Process all the plist keys
-            foreach (array('enabled', 'unlock', 'fingerprints', 'timeout') as $item) {
+            foreach (array('enabled', 'unlock', 'fingerprints', 'timeout', 'match_timeout', 'passcode_input_timeout') as $item) {
                 // If key does not exist in $plist, null it
                 if ( ! array_key_exists($item, $plist) || $plist[$item] == '') {
                     $this->$item = null;
