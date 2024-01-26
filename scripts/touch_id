@@ -8,7 +8,7 @@ import platform
 import re
 
 def get_system_prints():
-                
+
     # Get all Touch ID fingerprints
     cmd = ['/usr/bin/bioutil', '-sc']
     proc = subprocess.Popen(cmd, shell=False, bufsize=-1,
@@ -17,7 +17,7 @@ def get_system_prints():
     (output, unused_error) = proc.communicate()
 
     # This text is different for different versions of macOS
-    if "There are no ":
+    if "There are no " in output.decode("utf-8", errors="ignore"):
         return "No fingerprints"
     else:
 
@@ -43,7 +43,7 @@ def get_system_prints():
                     fingerprint = username[:-1]+" (" + user_id + ") - " + finderprint_count + " fingerprints"
 
                 fingerprints = fingerprint + "\n" + fingerprints
-            
+
     return fingerprints[:-1]
 
 def getTouchIDConfig():

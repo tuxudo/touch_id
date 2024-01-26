@@ -9,7 +9,7 @@ $(document).on('appReady', function(){
         if( ! d ||  d['enabled'] == null){
             // Change loading message to no data
             $('#touch_id-msg').text(i18n.t('no_data'));
-            
+
         } else {
 
             // Hide loading/no data message
@@ -19,7 +19,7 @@ $(document).on('appReady', function(){
             var rows = ''
             for (var prop in d){
                 // Do nothing for empty values to blank them
-                if (d[prop] == '' || d[prop] == null){
+                if ((d[prop] == '' || d[prop] == null) && d[prop] != "0"){
                     rows = rows
 
                 // Format booleans

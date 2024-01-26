@@ -21,7 +21,7 @@ class TouchId extends Migration
             $table->index('unlock');
         });
     }
-    
+
     public function down()
     {
         $capsule = new Capsule();
