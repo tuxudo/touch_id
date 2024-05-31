@@ -24,7 +24,7 @@ def get_system_prints():
         fingerprints = ""
 
         for user in output.decode("utf-8", errors="ignore").split('\n'):
-            if 'fingerprint' in user:
+            if 'fingerprint' in user or 'biometric' in user:
 
                 fingerprint_array=user.split(":")
                 user_id=re.sub('\D', '', fingerprint_array[0])
@@ -71,11 +71,11 @@ def getTouchIDConfig():
             elif 'Touch ID unlock: 0' in line or 'Biometrics for unlock: 0' in line:
                 config['unlock'] = 0
             elif 'Touch ID timeout ' in line or 'Biometric timeout ' in line:
-                config['timeout']=re.sub('\D', '', line)
+                config['timeout'] = re.sub('\D', '', line)
             elif 'Match timeout ' in line:
-                config['match_timeout']=re.sub('\D', '', line)
+                config['match_timeout'] = re.sub('\D', '', line)
             elif 'Passcode input timeout ' in line:
-                config['passcode_input_timeout']=re.sub('\D', '', line)
+                config['passcode_input_timeout'] = re.sub('\D', '', line)
 
         return config
 
