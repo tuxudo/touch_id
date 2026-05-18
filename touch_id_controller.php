@@ -81,8 +81,10 @@ class Touch_id_controller extends Module_controller
         $serial_number = preg_replace("/[^A-Za-z0-9_\-]]/", '', $serial_number);
 
         $sql = "SELECT `enabled`, `unlock`, `timeout`, `match_timeout`, `passcode_input_timeout`, `fingerprints`
-                        FROM touch_id 
-                        WHERE serial_number = '$serial_number'";
+                        FROM touch_id
+                        LEFT JOIN reportdata USING (serial_number)
+                        ".get_machine_group_filter()."
+                        AND serial_number = '$serial_number'";
 
         $obj = new View();
         $queryobj = new Touch_id_model();
