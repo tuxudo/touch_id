@@ -27,8 +27,8 @@ def get_system_prints():
             if 'fingerprint' in user or 'biometric' in user:
 
                 fingerprint_array=user.split(":")
-                user_id=re.sub('\D', '', fingerprint_array[0])
-                finderprint_count=re.sub('\D', '', fingerprint_array[1])
+                user_id=re.sub('\\D', '', fingerprint_array[0])
+                finderprint_count=re.sub('\\D', '', fingerprint_array[1])
 
                 cmd = ['/usr/bin/id', '-un', user_id]
                 proc = subprocess.Popen(cmd, shell=False, bufsize=-1,
@@ -71,11 +71,11 @@ def getTouchIDConfig():
             elif 'Touch ID unlock: 0' in line or 'Biometrics for unlock: 0' in line:
                 config['unlock'] = 0
             elif 'Touch ID timeout ' in line or 'Biometric timeout ' in line:
-                config['timeout'] = re.sub('\D', '', line)
+                config['timeout'] = re.sub('\\D', '', line)
             elif 'Match timeout ' in line:
-                config['match_timeout'] = re.sub('\D', '', line)
+                config['match_timeout'] = re.sub('\\D', '', line)
             elif 'Passcode input timeout ' in line:
-                config['passcode_input_timeout'] = re.sub('\D', '', line)
+                config['passcode_input_timeout'] = re.sub('\\D', '', line)
 
         return config
 
